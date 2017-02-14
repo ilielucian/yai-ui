@@ -19,3 +19,4 @@ Yet Another Instagram -- UI project with TypeScript &amp; Angular 2
 
 ## Notes
 * The project uses **lite server**. This means all the changes in your static files, after save, are immediately visible in browser.
+* For GIT cheat sheet, go to https://www.git-tower.com/blog/git-cheat-sheet/.
