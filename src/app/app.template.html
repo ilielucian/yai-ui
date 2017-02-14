@@ -42,7 +42,8 @@
       <div class="likes">
 
 
-        <div class="like" [ngClass]="{'liked': storyLikes.indexOf(currentUser) > -1, 'not-liked': storyLikes.indexOf(currentUser) < 0}">
+        <div class="like" [ngClass]="{'liked': storyLikes.indexOf(currentUser) > -1, 'not-liked': storyLikes.indexOf(currentUser) < 0}"
+          (click)="toggleLike()">
           <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
         </div>
 

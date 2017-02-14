@@ -20,6 +20,16 @@ export class AppComponent {
   storyComment = 'Que porqueria!!';
 
 
+  toggleLike() {
+    let likeIndexOfCurrentUser = this.storyLikes.indexOf(this.currentUser);
+
+    if (likeIndexOfCurrentUser < 0) {
+      this.storyLikes.push(this.currentUser);
+    } else {
+      this.storyLikes.splice(likeIndexOfCurrentUser, 1);
+    }
+  }
+
   // TODO should be a service
   formatDate(date: Date) {
     var monthNames = [
