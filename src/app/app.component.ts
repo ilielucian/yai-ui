@@ -1,34 +1,58 @@
 import { Component } from '@angular/core';
+import { Story } from './models/story';
 
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.template.html',
 })
 export class AppComponent {
-  name = 'Lucian';
 
   currentUser = 'Lucian';
+  stories = [
+    new Story({
+      author: 'Vlad',
+      date: new Date(),
+      title: 'What a goal!',
+      description: 'Hey gaiz, luc uat a gol!!',
+      likes: ['Lucian', 'Georgiana'],
+      comments: [
+        {
+          user: 'Lucian',
+          content: 'Cool man ;)',
+          date: new Date()
+        },
+        {
+          user: 'Georgiana',
+          content: 'Niiiice :D',
+          date: new Date()
+        }
+      ]
+    }),
+    new Story({
+      author: 'Georgiana',
+      date: new Date(),
+      title: 'Bambiiii',
+      description: 'Bunaaa, eu sunt Bambiii',
+      likes: ['Lucian'],
+      comments: [
+        {
+          user: 'Lucian',
+          content: '<3',
+          date: new Date()
+        },
+        {
+          user: 'Georgiana',
+          content: ':D',
+          date: new Date()
+        }
+      ]
+    })
+  ];
 
-  storyBy = 'Vlad';
-  storyDate = this.formatDate(new Date());
-  storyTitle = 'What a goal!';
-  storyDescription = 'Hey gaiz, luc uat a gol!!';
-  storyLikes = ['Lucian', 'Georgiana'];
-  storyLiked = this.storyLikes.indexOf(this.currentUser) > -1;
-
-  storyCommentUser = 'Lucian';
-  storyComment = 'Que porqueria!!';
-
-
-  toggleLike() {
-    let likeIndexOfCurrentUser = this.storyLikes.indexOf(this.currentUser);
-
-    if (likeIndexOfCurrentUser < 0) {
-      this.storyLikes.push(this.currentUser);
-    } else {
-      this.storyLikes.splice(likeIndexOfCurrentUser, 1);
-    }
+  getStories() : Story[] {
+    return this.stories;
   }
+
 
   // TODO should be a service
   formatDate(date: Date) {

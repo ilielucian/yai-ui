@@ -14,17 +14,17 @@
   <div id="page-inner">
 
 
-    <div class="post">
+    <div *ngFor="let story of getStories()" class="post">
       <div class="details">
         Upload by:
         <div class="update">
-          {{storyBy}}
+          {{story.author}}
         </div> on
         <div class="update">
-          {{storyDate}}
+          {{formatDate(story.date)}}
         </div>
         <div class="post-title">
-          {{storyTitle}}
+          {{story.title}}
         </div>
 
         <div class="delete-post"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
@@ -37,30 +37,21 @@
         photo lucian
       </div>
       <div class="description">
-        {{storyDescription}}
+        {{story.description}}
       </div>
+
       <div class="likes">
-
-
-        <div class="like" [ngClass]="{'liked': storyLikes.indexOf(currentUser) > -1, 'not-liked': storyLikes.indexOf(currentUser) < 0}"
-          (click)="toggleLike()">
+        <div class="like" [ngClass]="{'liked': story.getLikes().indexOf(currentUser) > -1, 'not-liked': story.getLikes().indexOf(currentUser) < 0}"
+          (click)="story.toggleLike(currentUser)">
           <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
         </div>
-
-        <form method="POST" action="functions/like-post.php" class="send-like">
-          <!-- <input type="text" name="id_post" value="id post lucian"> -->
-          <!-- <input type="text" name="username" value="username lucian"> -->
-          <!-- <input class="scroll" type="text" name="scroll" value=""> -->
-        </form>
-
-        <div class="number-likes">{{storyLikes.length}} likes</div>
+        <div class="number-likes">{{story.getLikes().length}} likes</div>
         <div class="show-likes">Show who liked this post</div>
         <div class="like-names">
-
           <div class="like-name">like name lucian</div>
-
         </div>
       </div>
+
       <div class="comments">
         <div class="add-comment">
           <form class="form-add-comment" method="POST" action="functions/add-comment.php">
@@ -73,10 +64,9 @@
         </div>
         <div class="clear"></div>
         <div class="comments-container">
-
-          <div class="comment-row">
-            <div class="comment-user">{{storyCommentUser}}</div>
-            <div class="comment">{{storyComment}}</div>
+          <div *ngFor="let comment of story.getComments()" class="comment-row">
+            <div class="comment-user">{{comment.user}}</div>
+            <div class="comment">{{comment.content}}</div>
             <div class="clear"></div>
           </div>
 
