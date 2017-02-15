@@ -1,18 +1,15 @@
 <h1>Hello {{currentUser}}</h1>
 
-
-
-
 <div id="banner">
   Have fun with your friends on Yourpic!
 </div>
+
 <div id="page">
   <div id="home"><i class="fa fa-home" aria-hidden="true"></i> Home</div>
   <div id="personal"><i class="fa fa-address-card-o" aria-hidden="true"></i> My page</div>
   <div id="sign-out"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</div>
   <div id="add-post"><i class="fa fa-plus-circle" aria-hidden="true"></i> New post</div>
   <div id="page-inner">
-
 
     <div *ngFor="let story of getStories()" class="post">
       <div class="details">
@@ -28,14 +25,11 @@
         </div>
 
         <div class="delete-post"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
-        <form style="display:none" method="POST" action="functions/delete-post.php" class="delete-form">
-
-        </form>
-
       </div>
+
       <div class="photo">
-        photo lucian
       </div>
+
       <div class="description">
         {{story.description}}
       </div>
@@ -53,24 +47,24 @@
       </div>
 
       <div class="comments">
-        <div class="add-comment">
-          <form class="form-add-comment" method="POST" action="functions/add-comment.php">
-            <!-- <input type="text" name="id_post" value="id post lucian" style="display:none"> -->
-            <!-- <input type="text" name="username" value="username lucian" style="display:none"> -->
-            <!-- <input type="text" name="scroll" value="" style="display:none" class="scroll"> -->
-            <input type="text" name="description" placeholder="Comment...">
-          </form>
-          <div class="submit-comment">Comment</div>
-        </div>
-        <div class="clear"></div>
+
         <div class="comments-container">
           <div *ngFor="let comment of story.getComments()" class="comment-row">
             <div class="comment-user">{{comment.user}}</div>
             <div class="comment">{{comment.content}}</div>
             <div class="clear"></div>
           </div>
-
         </div>
+
+        <div class="clear"></div>
+
+        <div class="add-comment">
+          <form class="form-add-comment" #addCommentForm="ngForm" (ngSubmit)="addStoryComment(story, addCommentForm)" novalidate>
+            <input type="text" name="content" placeholder="Comment..." ngModel required>
+            <button class="submit-comment">Comment</button>
+          </form>
+        </div>
+
       </div>
     </div>
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Story } from './models/story';
 
 @Component({
@@ -51,6 +52,17 @@ export class AppComponent {
 
   getStories() : Story[] {
     return this.stories;
+  }
+
+  // TODO separate in different component the add comment form
+  addStoryComment(story:Story, commentForm:NgForm) {
+    console.log(commentForm.value);
+    story.addComment({
+      user: this.currentUser,
+      content: commentForm.value.content,
+      date: new Date()
+    });
+    commentForm.reset();
   }
 
 

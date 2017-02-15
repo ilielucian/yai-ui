@@ -32,7 +32,7 @@ export class Story {
 
   toggleLike(currentUser : string) {
     console.log('call toggleLike');
-    
+
     let likeIndexOfCurrentUser = this.likes.indexOf(currentUser);
 
     if (likeIndexOfCurrentUser < 0) {
@@ -51,7 +51,7 @@ export class Story {
     return this.comments;
   }
 
-  addStoryComment(comment : Comment) {
+  addComment(comment : Comment) {
     this.comments.push(comment);
   }
 
