@@ -177,6 +177,7 @@ form#login-form {
 
 .likes {
   margin-top: 50px;
+  display: inline;
 }
 
 .like-names {

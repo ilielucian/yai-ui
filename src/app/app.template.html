@@ -45,10 +45,12 @@
             <div class="like" [ngClass]="{'liked': story.getLikes().indexOf(currentUser) > -1, 'not-liked': story.getLikes().indexOf(currentUser) < 0}" (click)="story.toggleLike(currentUser)">
               <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
             </div>
-            <div class="number-likes">{{story.getLikes().length}} likes</div>
-            <div class="show-likes">Show who liked this post</div>
-            <div class="like-names">
-              <div class="like-name">like name lucian</div>
+            <div>{{story.getLikes().length}} likes</div>
+            <div class="show-likes" (click)="showWhoLiked = !showWhoLiked">Show who liked this post</div>
+            <div *ngIf="showWhoLiked">
+              <div *ngFor="let like of story.getLikes()">
+                <div>{{like}}</div>
+              </div>
             </div>
           </div>
 

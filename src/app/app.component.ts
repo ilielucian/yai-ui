@@ -9,6 +9,7 @@ import { Story } from './models/story';
 export class AppComponent {
 
   currentUser = 'Lucian';
+
   stories = [
     new Story({
       author: 'Vlad',
