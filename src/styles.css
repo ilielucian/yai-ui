@@ -6,6 +6,15 @@ h1 {
 
 body {
   margin: 0 !important;
+  -webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
 }
 
 .clear {
@@ -178,6 +187,10 @@ form#login-form {
 .likes {
   margin-top: 50px;
   display: inline;
+}
+
+.likes-show {
+  cursor: pointer;
 }
 
 .like-names {
